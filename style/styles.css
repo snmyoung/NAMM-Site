@@ -1,0 +1,457 @@
+/* =========================================================
+   NAMM POP-UP SITE STYLESHEET
+   Author: Nicole + Alex
+   Purpose: Global styles for all NAMM Pop-Up event pages
+
+   CONTENTS
+     1) FOUNDATIONS (variables, reset, type)
+     2) LAYOUT & FRAME (wrapper, sections)
+     3) NAVBAR (brand lockup, links, CTA)
+     4) HERO (seal, headline)
+     5) PANELS & CARDS (highlights, lift)
+     6) BUTTONS (CTA, ghost, outline)
+     7) IMAGES & LOGOS (crop/contain helpers)
+     8) VENDOR GRID (cards, logo area, actions)
+     9) VENDOR SPOTLIGHT (featured layout)
+    10) COMMITTEE GRID (logo cards for partners)
+    11) FORMS (inputs, validation)
+    12) CTA STRIP (row of buttons)
+    13) FOOTER (social, small-print)
+    14) ACCESSIBILITY (skip link, focus rings)
+    15) UTILITIES (quick helpers)
+========================================================= */
+
+
+/* ================================
+   1) FOUNDATIONS
+   - Site palette + base reset + typography
+   - Notes:
+     * Use Tiffany + Gold as brand core.
+     * Deep teals for panels so nothing is flat white.
+=================================== */
+
+:root{
+  /* ----- Brand Colors ----- */
+  --tiffany:       #6DD5CF;   /* main brand aqua */
+  --tiffany-2:     #87E8E2;   /* lighter gradient stop */
+  --tiffany-deep:  #2A9D95;   /* deeper teal (nav) */
+  --teal-1:        #0D4D4B;   /* panel top */
+  --teal-2:        #0A3D3C;   /* panel bottom */
+  --gold:          #D4AF37;   /* accent gold */
+  --ink:           #0E1111;   /* very dark text/bg */
+  --white:         #FFFFFF;
+
+  /* ----- Spacing Scale (optional helpers) ----- */
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+
+  /* ----- Radii & Shadows ----- */
+  --radius: 10px;
+  --shadow-lift: 0 10px 24px rgba(0,0,0,.25);
+  --shadow-inner: inset 0 0 0 6px rgba(212,175,55,.25);
+}
+
+/* ----- Reset / base ----- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body{
+  /* Body background is a gradient so page never looks flat */
+  margin: 0;
+  color: #ECFFFF;
+  background: linear-gradient(180deg, var(--tiffany) 0%, var(--tiffany-2) 100%);
+  font-family: 'Lato', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* Make images not overflow containers */
+img { max-width: 100%; height: auto; display: block; }
+
+/* Headings use sassy Poppins for pop-up vibe */
+h1, h2, h3, .brand-title, .hero-title { 
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+
+/* ================================
+   2) LAYOUT & FRAME
+   - Site wrapper with golden frame + depth
+   - Section spacing utility
+=================================== */
+
+.site-frame{
+  max-width: 1200px;
+  margin: 24px auto;
+  border: 10px solid var(--gold);
+  box-shadow: var(--shadow-inner), 0 12px 40px rgba(0,0,0,.25);
+  background: linear-gradient(180deg, var(--teal-1) 0%, var(--teal-2) 100%);
+  border-radius: var(--radius);
+  overflow: clip; /* keeps rounded corners on inner content */
+}
+
+.section-pad { padding: 64px 0; }
+
+.text-gold { color: var(--gold) !important; }
+
+.divider-gold{
+  height: 4px;
+  background: var(--gold);
+  opacity: .95;
+}
+
+
+/* ================================
+   3) NAVBAR
+   - High-contrast bar, gold underline
+   - CTA stands out as a pill button
+=================================== */
+
+.main-nav{
+  background: linear-gradient(90deg, var(--tiffany-deep), #1f6d69);
+  border-bottom: 4px solid var(--gold);
+}
+
+.brand-lockup{
+  display: flex; align-items: center; gap: .6rem;
+  text-decoration: none;
+}
+
+.brand-title{
+  color:#fff; font-weight: 900; letter-spacing: .3px;
+}
+
+.brand-badge{
+  width: 38px; height: 38px; border-radius: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: #fff; color: #183;
+  border: 2px solid var(--gold);
+}
+
+/* Nav links: bright, with gold hover/focus */
+.navbar .nav-link{
+  color: #EFFFFF !important;
+  font-weight: 800; letter-spacing: .3px;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link:focus{
+  color: var(--gold) !important;
+}
+
+/* CTA button in nav is a different color by design */
+.btn-cta{
+  background: var(--gold); border-color: var(--gold);
+  color: #151515; font-weight: 900;
+  border-radius: 999px; padding: .5rem 1rem;
+}
+.btn-cta:hover, .btn-cta:focus{
+  background: #c39a2e; border-color: #c39a2e; color:#0a0a0a;
+}
+
+
+/* ================================
+   4) HERO
+   - Bishop seal + big headline
+   - Radial gradient gives depth
+=================================== */
+
+#hero{
+  background: radial-gradient(100% 100% at 50% 0%, #7fe3de 0%, var(--tiffany) 40%, var(--teal-1) 100%);
+  text-align: center;
+}
+
+.seal{
+  /* circular crop with golden rim */
+  width: 130px; height: 130px; border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--gold);
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+
+.hero-title{
+  font-weight: 1000; letter-spacing: .4px;
+  text-shadow: 0 2px 0 rgba(0,0,0,.35);
+}
+
+.hero-lead{ opacity: .98; }
+
+
+/* ================================
+   5) PANELS & CARDS
+   - Highlight box + lift effect
+=================================== */
+
+.highlights{
+  /* used for quick event details */
+  background: linear-gradient(180deg, #7fe3de, var(--tiffany));
+  color: #053534;
+  border: 3px solid rgba(212,175,55,.8);
+  border-radius: 12px;
+}
+
+/* Reusable hover elevation */
+.lift{
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.lift:hover{
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift) !important;
+}
+
+/* Optional base card dark styling (Bootstrap card gets themed by container bg) */
+.card{
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+}
+
+
+/* ================================
+   6) BUTTONS
+   - CTA (gold), Ghost (transparent), Outline-light
+=================================== */
+
+.btn-ghost{
+  background: transparent;
+  border: 2px solid #b2ffff;
+  color: #eaffff;
+  font-weight: 800;
+}
+.btn-ghost:hover, .btn-ghost:focus{
+  background: rgba(255,255,255,.10);
+}
+
+.btn-outline-light{
+  /* for small icon buttons on cards */
+  border-width: 2px;
+  font-weight: 700;
+}
+
+
+/* ================================
+   7) IMAGES & LOGOS
+   - Crop vs contain rules
+   - Use crop for photos/thumbnails; contain for brand logos
+=================================== */
+
+/* Square crop helper (wrap an <img> inside) */
+.sq-1x1{
+  position: relative; width: 100%; padding-top: 100%; /* 1:1 */
+  overflow: hidden; border-radius: 10px;
+  border: 2px solid rgba(255,255,255,.12);
+}
+.sq-1x1 > img{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; /* crop to square */
+}
+
+/* Committee/Vendor logos that must NOT be cropped */
+.logo-card img{
+  max-height: 80px; /* adjust per section if needed */
+  object-fit: contain; /* keep original ratio */
+  margin-inline: auto;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.2));
+  border: 3px solid rgba(212,175,55,.35); /* subtle gold frame */
+  border-radius: 10px;
+  background: rgba(255,255,255,.06);
+  padding: .5rem;
+}
+
+
+/* ================================
+   8) VENDOR GRID
+   - Consistent card layout for many logos
+   - Fixed “logo area” to align rows
+=================================== */
+
+.vendor-card{
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Top area for logo — fixes card heights alignment */
+.vendor-card .card-img-top{
+  background: rgba(255,255,255,.04);
+  height: 110px;             /* uniform logo window */
+  object-fit: contain;       /* do NOT crop vendor logos here */
+  padding: .5rem;            /* little breathing room */
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.vendor-card .card-body{
+  padding: .75rem .75rem 1rem;
+}
+
+.vendor-card .card-body h3{
+  margin: 0; font-weight: 800;
+}
+
+/* Action buttons below logo */
+.vendor-card .btn{
+  padding: .35rem .55rem;
+}
+
+
+/* ================================
+   9) VENDOR SPOTLIGHT
+   - Bigger feature block with image pane
+=================================== */
+
+.spotlight{
+  border: 3px solid rgba(212,175,55,.65);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,.03);
+}
+
+.spotlight img{
+  /* big image pane on the left; crop to fill */
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.spotlight .content{
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+
+/* ================================
+   10) COMMITTEE GRID
+   - Same card idea, but logos use contain (never crop)
+=================================== */
+
+.committee-grid .card{
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.committee-grid .card .p-3{
+  /* space around logo in the card header zone */
+  background: rgba(255,255,255,.04);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.committee-grid .card .card-body .small{
+  opacity: .95;
+}
+
+
+/* ================================
+   11) FORMS
+   - Works for Netlify and Formspree
+   - High contrast fields, Bootstrap validation support
+=================================== */
+
+label.form-label{
+  font-weight: 800;
+  color: #f1ffff;
+}
+
+.form-control{
+  background: rgba(255,255,255,.9);
+  color: #111;
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+.form-control:focus{
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(212,175,55,.25);
+}
+
+/* Validation visuals (Bootstrap adds .was-validated + :invalid/:valid) */
+.was-validated .form-control:invalid{
+  border-color: #dc3545;
+}
+.was-validated .form-control:valid{
+  border-color: #198754;
+}
+
+
+/* ================================
+   12) CTA STRIP
+   - Always-visible call-to-action bar
+=================================== */
+
+.cta-strip{
+  background: var(--tiffany);
+  color: #052726;
+  border-top: 4px solid var(--gold);
+  border-bottom: 4px solid var(--gold);
+}
+
+
+/* ================================
+   13) FOOTER
+   - Dark + gold top border + socials
+=================================== */
+
+footer{
+  background: #051f1f;
+  border-top: 4px solid var(--gold);
+  color: #dfeeee;
+}
+
+footer a{ color: #dfeeee; }
+footer a:hover, footer a:focus{ color: var(--gold); }
+
+/* Header/Foot social links */
+.social a{ color: #eaffff; }
+.social a:hover, .social a:focus{ color: var(--gold); }
+
+
+/* ================================
+   14) ACCESSIBILITY
+   - Skip link + visible focus rings
+   - Reduced motion support
+=================================== */
+
+/* Hidden until keyboard focus brings it into view */
+.skip-link{
+  position: absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.skip-link:focus{
+  position: static; width: auto; height: auto;
+  padding: .5rem .75rem;
+  background: #fff; color: #000;
+  z-index: 9999; border: 3px solid var(--gold);
+}
+
+/* Gold outline for keyboard users */
+:focus-visible{
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .lift{ transition: none; }
+}
+
+
+/* ================================
+   15) UTILITIES
+   - Tiny, reusable helpers
+=================================== */
+
+.text-aqua{ color: #eaffff !important; }
+
+.border-gold{ border: 2px solid var(--gold) !important; }
+
+.shadow-lift{ box-shadow: var(--shadow-lift) !important; }
+
+/* Spacing helpers if needed (Bootstrap has many already) */
+.mt-6{ margin-top: var(--space-6) !important; }
+.mb-6{ margin-bottom: var(--space-6) !important; }
+.pt-6{ padding-top: var(--space-6) !important; }
+.pb-6{ padding-bottom: var(--space-6) !important; }
